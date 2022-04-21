@@ -1,4 +1,5 @@
 import requests
+import os
 
 def main():
     print("Welcome to IsItDown.py!")
@@ -26,11 +27,18 @@ def main():
 def question():
     ask = input("Do you want to start over? y/n ")
     if ask == "y":
+        clear_console()
         main()
     elif ask == "n":
         print("k.bye!")
     else:
         print("That's not a valid answer.")
         question()
+
+def clear_console():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+        command = 'cls'
+    os.system(command)
 
 main()
